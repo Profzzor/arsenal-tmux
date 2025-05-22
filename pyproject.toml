@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arsenal-tmux"
+version = "1.0.0"
+description = "Tmux integrated arsenal-cli"
+requires-python = ">=3.6"
+authors = [
+  { name = "profzzor"}
+]
+dependencies = [
+  "libtmux",
+  "pyperclip",
+  "docutils",
+  "pyyaml",
+  "pyfzf"
+]
+
+[project.urls]
+Original = "https://github.com/Orange-Cyberdefense/arsenal"
+
+readme = "README.md"
+
+[project.scripts]
+arsenal = "arsenal_tmux.app:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"arsenal_tmux" = ["data/cheats/**/*"]
+
+[tool.setuptools.packages.find]
+include = ["arsenal_tmux*"]
+
+
+# This project is a Tmux-integrated fork of [arsenal-cli](https://github.com/Orange-Cyberdefense/arsenal), originally created by **Guillaume Muh** and **mayfly**.
+
+# Credits:
+# Original authors: Guillaume Muh, mayfly
+# Project inspired by: Mojo8898's tmux integration concept
