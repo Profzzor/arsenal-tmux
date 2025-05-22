@@ -22,10 +22,10 @@ This fork enhances `arsenal` with seamless `tmux` integration, inspired by **Moj
 
 ## 📦 Installation
 
-### 🧪 Via `uv` (Recommended)
+### 🧪 Via `pipx` (Recommended)
 
 ```bash
-uv pip install "git+https://github.com/profzzor/arsenal-tmux.git"
+pipx install "git+https://github.com/profzzor/arsenal-tmux.git"
 ```
 
 ### 🧱 Local Development Install
@@ -33,7 +33,7 @@ uv pip install "git+https://github.com/profzzor/arsenal-tmux.git"
 ```bash
 git clone https://github.com/profzzor/arsenal-tmux.git
 cd arsenal-tmux
-pip install . --break-system-packages
+pip3 install . --break-system-packages
 ```
 
 > 💡 You can also use a virtual environment.
