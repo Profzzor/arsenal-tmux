@@ -10,4 +10,4 @@ __author__ = 'profzzor'
 
 __license__ = 'GPL-3.0'  # keep license as it’s inherited
 __url__ = 'https://github.com/profzzor/arsenal-tmux'  # your fork repo URL
-__version__ = '1.0.0'
+__version__ = '1.1.0'

@@ -67,10 +67,19 @@ arsenal-tmux
 ```
 > ✅ Arsenal will auto-detect pane layout and decide whether to split or reuse an existing pane.
 
-### Execute in the Pane 1 or Create a Pane (split vertical)
+### Execute in the Pane 1 or Create a Pane
 ```bash
 arsenal-tmux 1 -e
 ```
+
+### Execute Commond with global pane Options
+
+```bash
+arsenal-tmux
+
+set p=1
+```
+> You can change the pane no at any time.
 
 ---
 

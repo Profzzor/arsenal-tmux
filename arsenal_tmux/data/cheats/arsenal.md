@@ -4,6 +4,11 @@
 
 #plateform/linux #target/local #cat/INTERNAL 
 
+## Set pane global variable
+```
+>set p=<pane>
+```
+
 ## List global variable
 ```
 >show

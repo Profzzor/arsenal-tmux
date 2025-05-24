@@ -1,7 +1,7 @@
 # Maintainer: profzzor <https://github.com/profzzor>
 
 pkgname=arsenal-tmux
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Tmux-integrated clone of arsenal-cli (pentest command launcher)"
 arch=('any')

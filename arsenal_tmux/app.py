@@ -96,20 +96,14 @@ class App:
                     self.run()
                 elif re.match(r"^\>set( [^= ]+=[^= ]+)+$", cmd.cmdline):
                     # Load previous global var
-                    if (os.path.exists(config.savevarfile)):
-                        with open(config.savevarfile, 'r') as f:
-                            arsenalGlobalVars = json.load(f)
-                    else:
-                        arsenalGlobalVars = {}
+                    arsenalGlobalVars = load_globals()
                     # Add new glovar var
                     varlist = re.findall("([^= ]+)=([^= ]+)", cmd.cmdline)
                     for v in varlist:
                         arsenalGlobalVars[v[0]] = v[1]
-                    with open(config.savevarfile, "w") as f:
-                        f.write(json.dumps(arsenalGlobalVars))
+                    save_globals(arsenalGlobalVars)
                     continue
                 else:
-                    print("Arsenal: invalid internal command..")
                     break
 
             # OPT: Copy CMD to clipboard
@@ -141,21 +135,41 @@ class App:
                 current_pane = window.attached_pane
 
                 target_pane = None
+                # --- Check if 'p' is set in global vars ---
+                gvars = load_globals()
+                p_val = gvars.pop("p", None)  # Get and remove 'p' in one step
+                save_globals(gvars)
+                if p_val is not None:
+                    try:
+                        pane_override = int(p_val)
+                        if 1 <= pane_override <= 9:
+                            args.pane_index = pane_override
+                    except ValueError:
+                        pass  # Handle invalid int conversion gracefully
+
                 if args.pane_index is not None:
                     # User specified a pane index
                     if args.pane_index < len(panes):
                         target_pane = panes[args.pane_index]
                     else:
                         # Pane doesn't exist — create new one
-                        target_pane = window.split_window(attach=False)
+                        pane_width = int(current_pane['width'])
+                        pane_height = int(current_pane['height'])
+
+                        split_vertical = pane_width >= pane_height
+                        target_pane = window.split_window(attach=False, vertical=split_vertical)
                         time.sleep(0.3)
+
+                        # Optional: Balance layout
+                        window.select_layout('tiled')
                 else:
                     # Determine the target pane
                     if len(panes) == 1:
                         if args.exec:
-                            current_pane.send_keys(cmd.cmdline)
+                            print(cmd.cmdline)
+                            os.system(cmd.cmdline)
                         else:
-                            current_pane.send_keys(cmd.cmdline, enter=False)
+                            print(cmd.cmdline)
 
                         return  # Exit Arsenal sending to current pane
                         
@@ -177,6 +191,16 @@ class App:
             except (ImportError, libtmux.exc.LibTmuxException) as e:
                 print("Error using tmux:", str(e))
                 return
+                
+def load_globals():
+    if os.path.exists(config.savevarfile):
+        with open(config.savevarfile, 'r') as f:
+            return json.load(f)
+    return {}
+
+def save_globals(data):
+    with open(config.savevarfile, 'w') as f:
+        json.dump(data, f)
 
 def main():
     try:
