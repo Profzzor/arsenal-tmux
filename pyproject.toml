@@ -24,7 +24,7 @@ Original = "https://github.com/Orange-Cyberdefense/arsenal"
 readme = "README.md"
 
 [project.scripts]
-arsenal = "arsenal_tmux.app:main"
+arsenal-tmux = "arsenal_tmux.app:main"
 
 [tool.setuptools]
 include-package-data = true
@@ -36,7 +36,7 @@ include-package-data = true
 include = ["arsenal_tmux*"]
 
 
-# This project is a Tmux-integrated fork of [arsenal-cli](https://github.com/Orange-Cyberdefense/arsenal), originally created by **Guillaume Muh** and **mayfly**.
+# This project is a Tmux-integrated clone of [arsenal-cli](https://github.com/Orange-Cyberdefense/arsenal), originally created by **Guillaume Muh** and **mayfly**.
 
 # Credits:
 # Original authors: Guillaume Muh, mayfly

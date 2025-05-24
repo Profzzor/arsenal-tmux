@@ -20,16 +20,16 @@ class App:
 
     def get_args(self):
         examples = '''examples:
-        arsenal                 # default (tmux required)
-        arsenal 1               # send to tmux pane 1
-        arsenal --copy
-        arsenal --print
-        arsenal --exec
+        arsenal-tmux                 # default (tmux required)
+        arsenal-tmux 1               # send to tmux pane 1
+        arsenal-tmux --copy
+        arsenal-tmux --print
+        arsenal-tmux --exec
         '''
 
         parser = argparse.ArgumentParser(
-            prog="arsenal",
-            description='arsenal v{} - Pentest command launcher'.format(__version__),
+            prog="arsenal-tmux",
+            description='arsenal-tmux v{} - Pentest command launcher'.format(__version__),
             epilog=examples,
             formatter_class=argparse.RawTextHelpFormatter
         )

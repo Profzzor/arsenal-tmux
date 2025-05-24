@@ -1,10 +1,10 @@
 # Arsenal-Tmux
 
-> 🛠️ A `tmux`-integrated fork of [arsenal-cli](https://github.com/Orange-Cyberdefense/arsenal)
+> 🛠️ A `tmux`-integrated Clone of [arsenal-cli](https://github.com/Orange-Cyberdefense/arsenal)
 
-This project is a customized fork of the original [arsenal](https://github.com/Orange-Cyberdefense/arsenal), developed by **Guillaume Muh** and **mayfly**. All credit for the core concept and functionality goes to them.
+This project is a customized clone of the original [arsenal](https://github.com/Orange-Cyberdefense/arsenal), developed by **Guillaume Muh** and **mayfly**. All credit for the core concept and functionality goes to them.
 
-This fork enhances `arsenal` with seamless `tmux` integration, inspired by **Mojo8898**'s workflow ideas, allowing commands to be sent across tmux panes.
+This clone enhances `arsenal` with seamless `tmux` integration, inspired by **Mojo8898**'s workflow ideas, allowing commands to be sent across tmux panes.
 
 ---
 
@@ -31,7 +31,7 @@ pipx install "git+https://github.com/profzzor/arsenal-tmux.git"
 ### 🧱 Local Development Install
 
 ```bash
-git clone https://github.com/profzzor/arsenal-tmux.git
+git clone --depth 1 https://github.com/profzzor/arsenal-tmux.git
 cd arsenal-tmux
 pip3 install . --break-system-packages
 ```
@@ -45,14 +45,14 @@ pip3 install . --break-system-packages
 Start Arsenal with:
 
 ```bash
-arsenal
+arsenal-tmux
 ```
 
 > We recommend adding an alias:
 ```bash
-echo "alias a='arsenal'" >> ~/.bashrc
+echo "alias at='arsenal-tmux'" >> ~/.bashrc
 # or for Zsh
-echo "alias a='arsenal'" >> ~/.zshrc
+echo "alias at='arsenal-tmux'" >> ~/.zshrc
 ```
 
 ---
@@ -63,13 +63,13 @@ Run inside a `tmux` session, Arsenal can send commands to another pane.
 
 ### Send to Current Pane if no other Pane Exists
 ```bash
-arsenal
+arsenal-tmux
 ```
 > ✅ Arsenal will auto-detect pane layout and decide whether to split or reuse an existing pane.
 
 ### Execute in the Pane 1 or Create a Pane (split vertical)
 ```bash
-arsenal 1 -e
+arsenal-tmux 1 -e
 ```
 
 ---

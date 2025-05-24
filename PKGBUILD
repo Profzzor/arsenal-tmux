@@ -3,7 +3,7 @@
 pkgname=arsenal-tmux
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Tmux-integrated fork of arsenal-cli (pentest command launcher)"
+pkgdesc="Tmux-integrated clone of arsenal-cli (pentest command launcher)"
 arch=('any')
 url="https://github.com/profzzor/arsenal-tmux"
 license=('GPL3')
