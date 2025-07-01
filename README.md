@@ -22,10 +22,11 @@ This clone enhances `arsenal` with seamless `tmux` integration, inspired by **Mo
 
 ## 📦 Installation
 
-### 🧪 Via `pipx` (Recommended)
+### 🧪 Via `uv` (Recommended)
 
 ```bash
-pipx install "git+https://github.com/profzzor/arsenal-tmux.git"
+pip3 install uv --break-system-packages
+uv tool install "git+https://github.com/profzzor/arsenal-tmux.git"
 ```
 
 ### 🧱 Local Development Install
@@ -50,9 +51,11 @@ arsenal-tmux
 
 > We recommend adding an alias:
 ```bash
-echo "alias at='arsenal-tmux'" >> ~/.bashrc
+echo "alias a='arsenal-tmux'" >> ~/.bashrc
+source ~/.bashrc
 # or for Zsh
-echo "alias at='arsenal-tmux'" >> ~/.zshrc
+echo "alias a='arsenal-tmux'" >> ~/.zshrc
+source ~/.zshrc
 ```
 
 ---
@@ -125,7 +128,7 @@ Then use `<ip>` inside your cheatsheets.
 To prefix all commands (e.g., with `proxychains -q`):
 
 ```bash
-> set arsenal_prefix_cmd=proxychains -q
+> set prefix=proxychains -q
 arsenal -f
 ```
 
