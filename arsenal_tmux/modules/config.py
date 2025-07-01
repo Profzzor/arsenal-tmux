@@ -46,4 +46,4 @@ else:
     # Use tmux session's initial directory if in tmux, else fall back to os.getcwd()
     savevarfile = join(get_tmux_session_path(), "arsenal.json")
     
-PREFIX_GLOBALVAR_NAME = "arsenal_prefix_cmd"
+PREFIX_GLOBALVAR_NAME = "prefix"
