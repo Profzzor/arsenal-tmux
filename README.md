@@ -128,7 +128,7 @@ Then use `<ip>` inside your cheatsheets.
 To prefix all commands (e.g., with `proxychains -q`):
 
 ```bash
-> set prefix=proxychains -q
+> set prefix="proxychains -q"
 arsenal -f
 ```
 
