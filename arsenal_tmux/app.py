@@ -3,6 +3,7 @@ import json
 import os
 import re
 import time
+import shlex
 from curses import wrapper
 
 # arsenal
@@ -94,14 +95,22 @@ class App:
                     with open(config.savevarfile, "w") as f:
                         f.write(json.dumps({}))
                     self.run()
-                elif re.match(r"^\>set( [^= ]+=[^= ]+)+$", cmd.cmdline):
-                    # Load previous global var
-                    arsenalGlobalVars = load_globals()
-                    # Add new glovar var
-                    varlist = re.findall("([^= ]+)=([^= ]+)", cmd.cmdline)
-                    for v in varlist:
-                        arsenalGlobalVars[v[0]] = v[1]
-                    save_globals(arsenalGlobalVars)
+                elif cmd.cmdline.startswith(">set "):
+                    try:
+                        arsenalGlobalVars = load_globals()
+                        
+                        # Remove ">set " prefix and tokenize
+                        tokens = shlex.split(cmd.cmdline[5:])
+                        for token in tokens:
+                            if '=' in token:
+                                key, value = token.split('=', 1)
+                                arsenalGlobalVars[key] = value
+                            else:
+                                print(f"Invalid token (expected key=value): {token}")
+
+                        save_globals(arsenalGlobalVars)
+                    except Exception as e:
+                        print(f"Error setting global variables: {e}")
                     continue
                 else:
                     break
@@ -209,4 +218,4 @@ def main():
         exit(0)
 
 if __name__ == "__main__":
-    wrapper(main()) 
+    wrapper(main())
